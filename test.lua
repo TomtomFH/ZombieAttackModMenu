@@ -943,7 +943,7 @@ end)
 enemiesFolder.ChildAdded:Connect(function()
     if ESP == true then
         for _,v in enemiesFolder:GetChildren() do
-            local billboard = v:FindFirstChild("BillboardGui")
+            local billboard = v.Head:FindFirstChild("BillboardGui")
             if not billboard then
                 local BillboardGui = Instance.new('BillboardGui')
                 local TextLabel = Instance.new('TextLabel')
