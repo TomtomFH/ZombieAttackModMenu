@@ -73,8 +73,8 @@ end)
 spawn(function()
     while wait() do
 		if _G.farm2 then
-        	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0)
-        	game.Players.LocalPlayer.Character.Torso.Velocity = Vector3.new(0, 0, 0)
+        	game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart").Velocity = Vector3.new(0, 0, 0)
+        	game.Players.LocalPlayer.Character:WaitForChild("Torso").Velocity = Vector3.new(0, 0, 0)
 		end
     end
 end)
