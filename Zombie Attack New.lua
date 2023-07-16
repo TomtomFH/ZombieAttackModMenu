@@ -1,4 +1,4 @@
-loadstring(game:HttpGet("https://pastebin.com/raw/VXgUc4xh",true))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/TomtomFH/ZombieAttackModMenu/main/autofarm.lua",true))()
 
 local ZombieAttackStats = Instance.new("ScreenGui")
 local Frame = Instance.new("Frame")
