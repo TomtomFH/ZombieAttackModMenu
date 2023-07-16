@@ -930,6 +930,28 @@ TextButton3_2.MouseButton1Click:Connect(function()
     if ESP then
         TextButton3_2.TextColor3 = Color3.fromRGB(179, 255, 179)
         TextButton3_2.Text = "ESP On"
+	for _,v in enemiesFolder:GetChildren() do
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
+            if not billboard then
+                local BillboardGui = Instance.new('BillboardGui')
+                local TextLabel = Instance.new('TextLabel')
+
+                BillboardGui.Parent = v:WaitForChild("Head")
+                BillboardGui.AlwaysOnTop = true
+                BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+                BillboardGui.StudsOffset = Vector3.new(0,2,0)
+
+                TextLabel.Parent = BillboardGui
+                TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+                TextLabel.BackgroundTransparency = 1
+                TextLabel.Size = UDim2.new(1, 0, 1, 0)
+                TextLabel.Text = v.Name
+                TextLabel.TextColor3 = Color3.new(255, 255, 255)
+                TextLabel.TextScaled = true
+                TextLabel.TextStrokeColor3 = Color3.new(0,0,0)
+                TextLabel.TextStrokeTransparency = 0.5
+            end
+        end
     else
         TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
         TextButton3_2.Text = "ESP Off"
