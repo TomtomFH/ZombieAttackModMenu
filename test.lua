@@ -934,7 +934,7 @@ TextButton3_2.MouseButton1Click:Connect(function()
         TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
         TextButton3_2.Text = "ESP Off"
 	for _,v in ipairs(enemiesFolder:GetChildren()) do
-            local billboard = v.Head:FindFirstChild("BillboardGui")
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
             if billboard then
                 billboard:Destroy()
             end
@@ -945,7 +945,7 @@ end)
 enemiesFolder.ChildAdded:Connect(function()
     if ESP == true then
         for _,v in enemiesFolder:GetChildren() do
-            local billboard = v.Head:FindFirstChild("BillboardGui")
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
             if not billboard then
                 local BillboardGui = Instance.new('BillboardGui')
                 local TextLabel = Instance.new('TextLabel')
