@@ -933,9 +933,11 @@ TextButton3_2.MouseButton1Click:Connect(function()
     else
         TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
         TextButton3_2.Text = "ESP Off"
-        for _,v in enemiesFolder:GetChildren() do
+	for _,v in ipairs(enemiesFolder:GetChildren()) do
             local billboard = v.Head:FindFirstChild("BillboardGui")
-            billboard:Destroy()
+            if billboard then
+                billboard:Destroy()
+            end
         end
     end
 end)
