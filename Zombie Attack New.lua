@@ -462,8 +462,8 @@ TextButton3_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
 TextButton3_2.Position = UDim2.new(0.666666687, -175, -0.00999999978, 145)
 TextButton3_2.Size = UDim2.new(0, 250, 0, 50)
 TextButton3_2.Font = Enum.Font.SourceSansBold
-TextButton3_2.Text = "-"
-TextButton3_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton3_2.Text = "ESP Off"
+TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
 TextButton3_2.TextSize = 25.000
 TextButton3_2.TextStrokeTransparency = 0.500
 
@@ -589,7 +589,7 @@ Version.BackgroundTransparency = 1.000
 Version.Position = UDim2.new(0.5, -100, 0.139999986, 15)
 Version.Size = UDim2.new(0, 200, 0, 50)
 Version.Font = Enum.Font.SourceSansBold
-Version.Text = "V1.0"
+Version.Text = "V1.1"
 Version.TextColor3 = Color3.fromRGB(102, 102, 102)
 Version.TextSize = 20.000
 Version.TextStrokeTransparency = 0.500
@@ -920,3 +920,73 @@ TextButton2_2.MouseButton1Click:Connect(function()
     end
 end)
 
+local enemiesFolder = game.Workspace.enemies
+local ESP = false
+local ESPtoggle = false 
+
+TextButton3_2.MouseButton1Click:Connect(function()
+    ESPtoggle = not ESPtoggle
+    ESP = ESPtoggle
+    if ESP then
+        TextButton3_2.TextColor3 = Color3.fromRGB(179, 255, 179)
+        TextButton3_2.Text = "ESP On"
+	for _,v in enemiesFolder:GetChildren() do
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
+            if not billboard then
+                local BillboardGui = Instance.new('BillboardGui')
+                local TextLabel = Instance.new('TextLabel')
+
+                BillboardGui.Parent = v:WaitForChild("Head")
+                BillboardGui.AlwaysOnTop = true
+                BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+                BillboardGui.StudsOffset = Vector3.new(0,2,0)
+
+                TextLabel.Parent = BillboardGui
+                TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+                TextLabel.BackgroundTransparency = 1
+                TextLabel.Size = UDim2.new(1, 0, 1, 0)
+                TextLabel.Text = v.Name
+                TextLabel.TextColor3 = Color3.new(255, 255, 255)
+                TextLabel.TextScaled = true
+                TextLabel.TextStrokeColor3 = Color3.new(0,0,0)
+                TextLabel.TextStrokeTransparency = 0.5
+            end
+        end
+    else
+        TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
+        TextButton3_2.Text = "ESP Off"
+	for _,v in ipairs(enemiesFolder:GetChildren()) do
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
+            if billboard then
+                billboard:Destroy()
+            end
+        end
+    end
+end)
+
+enemiesFolder.ChildAdded:Connect(function()
+    if ESP == true then
+        for _,v in enemiesFolder:GetChildren() do
+            local billboard = v:WaitForChild("Head"):FindFirstChild("BillboardGui")
+            if not billboard then
+                local BillboardGui = Instance.new('BillboardGui')
+                local TextLabel = Instance.new('TextLabel')
+
+                BillboardGui.Parent = v:WaitForChild("Head")
+                BillboardGui.AlwaysOnTop = true
+                BillboardGui.Size = UDim2.new(0, 50, 0, 50)
+                BillboardGui.StudsOffset = Vector3.new(0,2,0)
+
+                TextLabel.Parent = BillboardGui
+                TextLabel.BackgroundColor3 = Color3.new(1,1,1)
+                TextLabel.BackgroundTransparency = 1
+                TextLabel.Size = UDim2.new(1, 0, 1, 0)
+                TextLabel.Text = v.Name
+                TextLabel.TextColor3 = Color3.new(255, 255, 255)
+                TextLabel.TextScaled = true
+                TextLabel.TextStrokeColor3 = Color3.new(0,0,0)
+                TextLabel.TextStrokeTransparency = 0.5
+            end
+        end
+    end
+end)
