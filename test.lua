@@ -934,7 +934,7 @@ TextButton3_2.MouseButton1Click:Connect(function()
         TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
         TextButton3_2.Text = "ESP Off"
         for _,v in enemiesFolder:GetChildren() do
-            local billboard = v:FindFirstChild("BillboardGui")
+            local billboard = v.Head:FindFirstChild("BillboardGui")
             billboard:Destroy()
         end
     end
