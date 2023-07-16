@@ -463,7 +463,7 @@ TextButton3_2.Position = UDim2.new(0.666666687, -175, -0.00999999978, 145)
 TextButton3_2.Size = UDim2.new(0, 250, 0, 50)
 TextButton3_2.Font = Enum.Font.SourceSansBold
 TextButton3_2.Text = "ESP Off"
-TextButton3_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
 TextButton3_2.TextSize = 25.000
 TextButton3_2.TextStrokeTransparency = 0.500
 
@@ -933,6 +933,12 @@ TextButton3_2.MouseButton1Click:Connect(function()
     else
         TextButton3_2.TextColor3 = Color3.fromRGB(255, 128, 128)
         TextButton3_2.Text = "ESP Off"
+        for _,v in enemiesFolder:GetChildren() do
+            local billboard = v:FindFirstChild("BillboardGui")
+            if billboard then
+                billboard:Destroy()
+            end
+        end
     end
 end)
 
