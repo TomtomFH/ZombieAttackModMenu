@@ -937,7 +937,7 @@ TextButton3_2.MouseButton1Click:Connect(function()
 end)
 
 enemiesFolder.ChildAdded:Connect(function()
-    if ESP = true then
+    if ESP == true then
         for _,v in enemiesFolder:GetChildren() do
             local billboard = v:FindFirstChild("BillboardGui")
             if not billboard then
