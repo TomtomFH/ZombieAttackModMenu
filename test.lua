@@ -935,9 +935,7 @@ TextButton3_2.MouseButton1Click:Connect(function()
         TextButton3_2.Text = "ESP Off"
         for _,v in enemiesFolder:GetChildren() do
             local billboard = v:FindFirstChild("BillboardGui")
-            if billboard then
-                billboard:Destroy()
-            end
+            billboard:Destroy()
         end
     end
 end)
